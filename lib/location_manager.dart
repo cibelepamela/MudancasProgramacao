@@ -33,7 +33,7 @@ class _locationManagerState extends State<locationManager> {
       children: <Widget>[
         userLocation == null
             ? CircularProgressIndicator()
-            : Text(userLocation.speed.toString() + " m/s",
+            : Text((3.6*userLocation.speed).toStringAsFixed(1) + " km/h",
                 style: TextStyle(fontSize: 100)),
         Padding(
           padding: const EdgeInsets.all(8.0),

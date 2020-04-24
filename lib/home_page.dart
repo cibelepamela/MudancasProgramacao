@@ -51,10 +51,6 @@ class HomePage extends StatelessWidget {
                           ),
                           color: Colors.yellow[300],
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[Text('Mensagem Equipe')],
-                        ),
                       ))
                 ],
               ),

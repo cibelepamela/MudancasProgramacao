@@ -3,19 +3,29 @@ import 'package:flutter/services.dart';
 
 import './home_page.dart';
 
+//void main() => runApp(MyApp());
 
-Future main() async {
-    await SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight]);
-    runApp(new MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight])
+    .then((_) {
+      runApp(new MyApp());
+    });
 }
 
+
 class MyApp extends StatelessWidget {
+
+  
   Widget build(BuildContext context) {
+    
+
     return MaterialApp(
-      theme: ThemeData( 
-          primarySwatch: Colors.yellow,
-        ),
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+      ),
       home: HomePage(),
     );
   }
+ 
 }
