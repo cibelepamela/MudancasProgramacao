@@ -1,10 +1,10 @@
+import 'package:fenrir_software/lap_counter.dart';
 import 'package:flutter/material.dart';
 
 import './location_manager.dart';
 
-
-
 class HomePage extends StatelessWidget {
+  var userLocation;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,14 +31,7 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     flex: 6,
                     child: Container(
-                      color: Colors.yellow[100],
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text('0', style: TextStyle(fontSize: 50)),
-                          Text(' Voltas', style: TextStyle(fontSize: 10)),
-                        ],
-                      ),
+                      child: LapCounter(),
                     ),
                   ),
                   Expanded(
