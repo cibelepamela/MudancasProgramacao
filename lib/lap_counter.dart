@@ -52,7 +52,7 @@ class LapCounterState extends State<LapCounter> {
       "round_uuid": round_uuid,
       "vel": (3.6*lapLocation.speed).toStringAsFixed(2)
     });
-    var response = await http.post('http://192.168.0.10:4996/FenrirApi', body: json, headers: {'Content-Type': 'application/json'});
+    var response = await http.post('http://fenrir.servebeer.com:1996/FenrirApi', body: json, headers: {'Content-Type': 'application/json'});
     print('Response status: ${response.statusCode}');
   }
 
@@ -75,11 +75,10 @@ class LapCounterState extends State<LapCounter> {
           child: Row(
             children: <Widget>[
               Container(
-                color: Colors.white,
                 child:
                 lapLocation == null
                     ? CircularProgressIndicator()
-                    : Text(lap.toString() + "laps",
+                    : Text(lap.toString() + " laps",
                   style: TextStyle(fontSize: 30)),
               )
             ],

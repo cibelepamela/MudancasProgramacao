@@ -31,6 +31,7 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     flex: 6,
                     child: Container(
+                      color: Colors.yellow[100],
                       child: LapCounter(),
                     ),
                   ),
