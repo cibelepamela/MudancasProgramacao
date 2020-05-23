@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+int tempo = 0;
 
 class chronometer extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _chronometerState extends State<chronometer> {
   bool stoptispressed = true;
   bool resettispressed = true;
   String stoptimetodisplay = '00:00:00';
+
   var swatch = Stopwatch();
   final dur = const Duration(milliseconds: 1);
 
@@ -18,12 +20,23 @@ class _chronometerState extends State<chronometer> {
     Timer(dur, keepruning);
   }
 
-  void keepruning(){
-    if(swatch.isRunning){
+  void keepruning() {
+    if (swatch.isRunning) {
       starttimer();
     }
     setState(() {
-      stoptimetodisplay = swatch.elapsed.inMinutes.toString().padLeft(2, '0') + ':' + (swatch.elapsed.inSeconds%60).toString().padLeft(2, '0') + ':' + (swatch.elapsed.inMilliseconds%60).toString().padLeft(2, '0');
+      if (tempo < 10000) {
+        stoptimetodisplay =
+            swatch.elapsed.inMinutes.toString().padLeft(2, '0') + ':' +
+                (swatch.elapsed.inSeconds % 60).toString().padLeft(2, '0') +
+                ':' +
+                (swatch.elapsed.inMilliseconds % 60).toString().padLeft(2, '0');
+        tempo = swatch.elapsed.inMilliseconds;
+      }
+      else {
+        swatch.reset();
+        tempo = 0;
+      }
     });
   }
 
@@ -63,7 +76,8 @@ class _chronometerState extends State<chronometer> {
             alignment: Alignment.center,
             child: Text(stoptimetodisplay,
             style: TextStyle(fontSize: 30.0,
-            fontWeight: FontWeight.w700)),
+            fontWeight: FontWeight.w700,
+            color: Colors.white)),
           ),
         ),
         Expanded(
@@ -72,7 +86,7 @@ class _chronometerState extends State<chronometer> {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                child: FlatButton(
+                child: RaisedButton(
                   color: Colors.red,
                   child: Text(
                     'Stop',
@@ -85,7 +99,7 @@ class _chronometerState extends State<chronometer> {
               ),
               Expanded(
                 flex: 1,
-                child: FlatButton(
+                child: RaisedButton(
                   color: Colors.amber,
                   child: Text('Reset',
                   style: TextStyle(fontSize: 10.0),
@@ -100,7 +114,7 @@ class _chronometerState extends State<chronometer> {
         ),
         Expanded(
           flex: 1,
-          child: FlatButton(
+          child: RaisedButton(
             color: Colors.green,
             child: Text('Start',
             style: TextStyle(fontSize: 15.0),
@@ -113,4 +127,10 @@ class _chronometerState extends State<chronometer> {
       ],
     );
   }
+}
+
+class time{
+  int getTempo() {
+    return tempo;
+}
 }

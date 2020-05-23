@@ -35,10 +35,8 @@ class _locationManagerState extends State<locationManager> {
         userLocation == null
             ? CircularProgressIndicator()
             : Text((3.6*userLocation.speed).toStringAsFixed(1) + " km/h",
-                style: TextStyle(fontSize: 100)),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-        ),
+                style: TextStyle(fontSize: 100,
+                color: Colors.white)),
       ],
     );
   }

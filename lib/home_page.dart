@@ -1,6 +1,6 @@
 import 'package:fenrir_software/lap_counter.dart';
 import 'package:flutter/material.dart';
-
+import 'stopwatch.dart';
 import './location_manager.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,12 +16,24 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 2, // 20%
-              child: Container(color: Colors.red),
+              child: Container(color: Colors.black),
             ),
             Expanded(
               flex: 6, // 60%
               child: Container(
-                child: locationManager(),
+                color: Colors.black,
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: locationManager(),
+                    ),
+                    Expanded(
+                      flex:1,
+                      child:chronometer(),
+                    )
+                  ]
+                )
               ),
             ),
             Expanded(
@@ -55,3 +67,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
