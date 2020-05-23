@@ -129,7 +129,7 @@ class _chronometerState extends State<chronometer> {
   }
 }
 
-class time{
+class timeFlag{
   int getTempo() {
     return tempo;
 }

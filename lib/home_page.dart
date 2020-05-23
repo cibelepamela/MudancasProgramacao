@@ -2,7 +2,7 @@ import 'package:fenrir_software/lap_counter.dart';
 import 'package:flutter/material.dart';
 import 'stopwatch.dart';
 import './location_manager.dart';
-
+import './luz.dart';
 class HomePage extends StatelessWidget {
   var userLocation;
   @override
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 2, // 20%
-              child: Container(color: Colors.black),
+              child: luz(),
             ),
             Expanded(
               flex: 6, // 60%

@@ -7,11 +7,18 @@ class luz extends StatefulWidget {
   _luzState createState() => _luzState();
 }
 
-class _luzState extends State<luz> {
-  time tempo = new time();
-  tempo.getTempo();
+class _luzState extends State<luz> with timeFlag{
+  int getTempo() {
+    // TODO: implement getTempo
+    return super.getTempo();
+  }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color:
+      getTempo() == 0 
+            ?  Colors.black  //muda fundo para preto se tempo = 0
+            :  Colors.white, //muda fundo para branco se tempo = 1
+    );
   }
 }
