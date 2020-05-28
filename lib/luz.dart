@@ -1,24 +1,17 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
-import 'stopwatch.dart';
 import 'dart:async';
+import 'package:fenrir_software/stopwatch.dart';
 
-class luz extends StatefulWidget {
-  @override
-  _luzState createState() => _luzState();
-}
 
-class _luzState extends State<luz> with timeFlag{
-  int getTempo() {
-    // TODO: implement getTempo
-    return super.getTempo();
-  }
+class luz extends chronometer {
+
   @override
+
+
   Widget build(BuildContext context) {
-    return Container(
-      color:
-      getTempo() == 0 
-            ?  Colors.black  //muda fundo para preto se tempo = 0
-            :  Colors.white, //muda fundo para branco se tempo = 1
+    return Container(color: Colors.white,
     );
   }
 }
