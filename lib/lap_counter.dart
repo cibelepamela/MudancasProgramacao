@@ -84,9 +84,9 @@ class LapCounterState extends State<LapCounter> {
       set++;
       now3 = DateTime.now();
     }
-    if (distance3 < 10 && time3 > 2){
+    if (distance4 < 10 && time4 > 2){
       set++;
-      now3 = DateTime.now();
+      now4 = DateTime.now();
     }
     if (set > 4){
       set = 1;
