@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 int tempo = 0;
+int flag = 0;
 
 class chronometer extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class _chronometerState extends State<chronometer> {
   bool stoptispressed = true;
   bool resettispressed = true;
   String stoptimetodisplay = '00:00:00';
+  int flag;
 
   var swatch = Stopwatch();
   final dur = const Duration(milliseconds: 1);
@@ -25,7 +27,7 @@ class _chronometerState extends State<chronometer> {
       starttimer();
     }
     setState(() {
-      if (tempo < 10000) {
+      if (tempo <= 10000) {
         stoptimetodisplay =
             swatch.elapsed.inMinutes.toString().padLeft(2, '0') + ':' +
                 (swatch.elapsed.inSeconds % 60).toString().padLeft(2, '0') +
@@ -63,6 +65,15 @@ class _chronometerState extends State<chronometer> {
       resettispressed = true;
     });
     swatch.reset();
+  }
+
+  void flags(){
+    if (tempo == 10000){
+      flag = 1;
+    }
+    if (tempo == 5000){
+      flag = 0;
+    }
   }
 
   @override
@@ -129,8 +140,20 @@ class _chronometerState extends State<chronometer> {
   }
 }
 
-class timeFlag{
-  int getTempo() {
-    return tempo;
+class teste extends StatefulWidget {
+  @override
+  _testeState createState() => _testeState();
 }
+
+class _testeState extends State<teste> {
+  @override
+  Widget build(BuildContext context) {
+    if (flag == 0){
+      return Container(color: Colors.black,);
+    }
+    if (flag == 1){
+      return Container(color: Colors.white);
+    }
+  }
 }
+
