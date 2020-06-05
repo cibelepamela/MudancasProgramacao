@@ -21,8 +21,8 @@ class LapCounterState extends State<LapCounter> {
   Position startPosition1, startPosition2, startPosition3, startPosition4;
   int lap = 0, set = 0;
   double distance1, distance2, distance3, distance4;
-  var time1, time2, time3, time4;
-  var now1, now2, now3, now4;
+  var time1, time2;
+  var now1, now2;
   var round_uuid;
 
   @override
@@ -65,6 +65,7 @@ class LapCounterState extends State<LapCounter> {
       lap++;
       set++;
       now1 = DateTime.now();
+      now2 = DateTime.now();
 //      print(distance);
     }
   }
@@ -74,19 +75,17 @@ class LapCounterState extends State<LapCounter> {
     distance3 = await geolocator.distanceBetween(startPosition3.latitude, startPosition3.longitude, lapLocation.latitude, lapLocation.longitude);
     distance4 = await geolocator.distanceBetween(startPosition4.latitude, startPosition4.longitude, lapLocation.latitude, lapLocation.longitude);
     time2 = DateTime.now().difference(now2).inSeconds;
-    time3 = DateTime.now().difference(now3).inSeconds;
-    time4 = DateTime.now().difference(now4).inSeconds;
     if (distance2 < 10 && time2 > 2){
       set++;
       now2 = DateTime.now();
     }
-    if (distance3 < 10 && time3 > 2){
+    if (distance3 < 10 && time2 > 2){
       set++;
-      now3 = DateTime.now();
+      now2 = DateTime.now();
     }
-    if (distance4 < 10 && time4 > 2){
+    if (distance3 < 10 && time2 > 2){
       set++;
-      now4 = DateTime.now();
+      now2 = DateTime.now();
     }
     if (set > 4){
       set = 1;
@@ -98,61 +97,63 @@ class LapCounterState extends State<LapCounter> {
     return Column(
       children: <Widget>[
         Expanded(
-          flex: 1,
-          child: Row(
-            children: <Widget>[
-              Container(
-                child:
-                lapLocation == null
-                    ? CircularProgressIndicator()
-                    : Text(lap.toString() + " laps",
-                  style: TextStyle(fontSize: 30)),
-              )
-            ],
-          ),
+          flex: 6,
+          child: Container(
+            alignment: Alignment.center,
+            child:
+            lapLocation == null
+                ? CircularProgressIndicator()
+                : Text(lap.toString() + " laps",
+                style: TextStyle(fontSize: 30.0)),
+          )
         ),
         Expanded(
-          flex: 1,
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.black,
-                  child: Text(
-                    "start",
-                    style: TextStyle(fontSize: 15, color: Colors.white),
-                  ),
-                  onPressed: ()async{
+          flex: 4,
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () async{
                     var asinc = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
                     setState(() {
                       startPosition1 = asinc;
                       round_uuid = uuid.v4();
                       now1 = DateTime.now();
                       now2 = DateTime.now();
-                      now3 = DateTime.now();
-                      now4 = DateTime.now();
                     });
                   },
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.white,
-                  child: Text(
-                    "Stop",
-                    style: TextStyle(fontSize: 15, color: Colors.black),
+                  color: Colors.green,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 80.0,
+                    vertical: 15.0,
                   ),
+                  child: Text('Start',
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    color: Colors.white,
+                  ),),
+                ),
+                RaisedButton(
                   onPressed: (){
                     setState(() {
                       startPosition1 = null;
                       lap = 0;
                     });
                   },
+                  color: Colors.red,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 80.0,
+                    vertical: 15.0,
+                  ),
+                  child: Text('Stop',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      color: Colors.white,
+                    ),),
                 )
-              )
-            ],
+              ],
+            ),
           ),
         )
       ],

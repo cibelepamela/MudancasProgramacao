@@ -1,7 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-int tempo = 0;
-int flag = 0;
 
 class chronometer extends StatefulWidget {
   @override
@@ -10,13 +9,13 @@ class chronometer extends StatefulWidget {
 
 class _chronometerState extends State<chronometer> {
   bool startispressed = true;
-  bool stoptispressed = true;
-  bool resettispressed = true;
+  bool stopispressed = true;
+  bool resetispressed = true;
   String stoptimetodisplay = '00:00:00';
-  int flag;
-
   var swatch = Stopwatch();
   final dur = const Duration(milliseconds: 1);
+  int tempo = 0;
+  int flag = 0;
 
   void starttimer(){
     Timer(dur, keepruning);
@@ -44,7 +43,7 @@ class _chronometerState extends State<chronometer> {
 
   void startstopwatch(){
     setState(() {
-      stoptispressed = false;
+      stopispressed = false;
       startispressed = false;
     });
     swatch.start();
@@ -53,8 +52,8 @@ class _chronometerState extends State<chronometer> {
 
   void stopstopwatch(){
     setState(() {
-      stoptispressed = true;
-      resettispressed = false;
+      stopispressed = true;
+      resetispressed = false;
     });
     swatch.stop();
   }
@@ -62,98 +61,128 @@ class _chronometerState extends State<chronometer> {
   void resetstopwatch(){
     setState(() {
       startispressed = true;
-      resettispressed = true;
+      resetispressed = true;
+      stoptimetodisplay = '00:00:00';
     });
     swatch.reset();
   }
 
-  void flags(){
-    if (tempo == 10000){
-      flag = 1;
-    }
-    if (tempo == 5000){
-      flag = 0;
-    }
+  int flags(){
+    setState(() {
+      if (tempo == 10000){
+        flag = 1;
+      }
+      if (tempo == 5000){
+        flag = 0;
+      }
+    });
   }
 
   @override
 
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: <Widget>[
         Expanded(
-          flex: 2,
-          child: Container(
-            alignment: Alignment.center,
-            child: Text(stoptimetodisplay,
-            style: TextStyle(fontSize: 30.0,
-            fontWeight: FontWeight.w700,
-            color: Colors.white)),
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: RaisedButton(
-                  color: Colors.red,
-                  child: Text(
-                    'Stop',
-                    style: TextStyle(fontSize: 10.0),
+            flex: 6,
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 6,
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        stoptimetodisplay,
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.w700
+                        ),
+                      ),
+                    ),
                   ),
-                  onPressed: (){
-                    stoptispressed ? null: stopstopwatch();
-                  },
-                ),
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              RaisedButton(
+                                onPressed:
+                                stopispressed
+                                    ? null
+                                    : stopstopwatch,
+                                color: Colors.red,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 40.0,
+                                  vertical: 10.0,
+                                ),
+                                child: Text(
+                                  'Stop',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+
+                              RaisedButton(
+                                onPressed:
+                                resetispressed
+                                    ? null
+                                    : resetstopwatch,
+                                color: Colors.teal,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 40.0,
+                                  vertical: 10.0,
+                                ),
+                                child: Text(
+                                  'Reset',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          RaisedButton(
+                            onPressed:
+                            startispressed
+                                ? startstopwatch
+                                : null,
+                            color: Colors.green,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 80.00,
+                              vertical: 25.00,
+                            ),
+                            child: Text(
+                              'Start',
+                              style: TextStyle(
+                                fontSize: 24.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
               ),
-              Expanded(
-                flex: 1,
-                child: RaisedButton(
-                  color: Colors.amber,
-                  child: Text('Reset',
-                  style: TextStyle(fontSize: 10.0),
-                  ),
-                  onPressed: (){
-                    resettispressed ? null: resetstopwatch();
-                  },
-                ),
-              )
-            ],
-          ),
+            )
         ),
         Expanded(
-          flex: 1,
-          child: RaisedButton(
-            color: Colors.green,
-            child: Text('Start',
-            style: TextStyle(fontSize: 15.0),
-            ),
-            onPressed: (){
-              startispressed ? startstopwatch(): null;
-            },
-          ),
+          flex: 4,
+          child:
+          flag == 0
+              ?Container(color: Colors.black)
+              :Container(color: Colors.white),
         )
       ],
     );
   }
 }
-
-class teste extends StatefulWidget {
-  @override
-  _testeState createState() => _testeState();
-}
-
-class _testeState extends State<teste> {
-  @override
-  Widget build(BuildContext context) {
-    if (flag == 0){
-      return Container(color: Colors.black,);
-    }
-    if (flag == 1){
-      return Container(color: Colors.white);
-    }
-  }
-}
-
