@@ -45,6 +45,7 @@ class _chronometerState extends State<chronometer> {
     setState(() {
       stopispressed = false;
       startispressed = false;
+      resetispressed = true;
     });
     swatch.start();
     starttimer();
@@ -54,6 +55,7 @@ class _chronometerState extends State<chronometer> {
     setState(() {
       stopispressed = true;
       resetispressed = false;
+      startispressed = true;
     });
     swatch.stop();
   }
@@ -67,9 +69,9 @@ class _chronometerState extends State<chronometer> {
     swatch.reset();
   }
 
-  int flags(){
+  void flags(){
     setState(() {
-      if (tempo == 10000){
+      if (tempo == 9000){
         flag = 1;
       }
       if (tempo == 5000){
@@ -85,11 +87,13 @@ class _chronometerState extends State<chronometer> {
       children: <Widget>[
         Expanded(
             flex: 6,
-            child: Container(
+            child:
+
+              Container(
               child: Column(
                 children: <Widget>[
                   Expanded(
-                    flex: 6,
+                    flex: 3,
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
@@ -157,7 +161,7 @@ class _chronometerState extends State<chronometer> {
                             color: Colors.green,
                             padding: EdgeInsets.symmetric(
                               horizontal: 80.00,
-                              vertical: 25.00,
+                              vertical: 15.00,
                             ),
                             child: Text(
                               'Start',
@@ -178,9 +182,9 @@ class _chronometerState extends State<chronometer> {
         Expanded(
           flex: 4,
           child:
-          flag == 0
-              ?Container(color: Colors.black)
-              :Container(color: Colors.white),
+          tempo <= 7000
+              ?Container(color: Colors.white)
+              :Container(color: Colors.green),
         )
       ],
     );
