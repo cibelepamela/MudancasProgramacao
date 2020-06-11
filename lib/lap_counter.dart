@@ -97,7 +97,7 @@ class LapCounterState extends State<LapCounter> {
     return Column(
       children: <Widget>[
         Expanded(
-          flex: 6,
+          flex: 3,
           child: Container(
             alignment: Alignment.center,
             child:
@@ -125,12 +125,12 @@ class LapCounterState extends State<LapCounter> {
                   },
                   color: Colors.green,
                   padding: EdgeInsets.symmetric(
-                    horizontal: 80.0,
-                    vertical: 15.0,
+                    horizontal: 50.0,
+                    vertical: 2.0,
                   ),
                   child: Text('Start',
                   style: TextStyle(
-                    fontSize: 24.0,
+                    fontSize: 10.0,
                     color: Colors.white,
                   ),),
                 ),
@@ -143,12 +143,12 @@ class LapCounterState extends State<LapCounter> {
                   },
                   color: Colors.red,
                   padding: EdgeInsets.symmetric(
-                    horizontal: 80.0,
-                    vertical: 15.0,
+                    horizontal: 50.0,
+                    vertical: 2.0,
                   ),
                   child: Text('Stop',
                     style: TextStyle(
-                      fontSize: 24.0,
+                      fontSize: 10.0,
                       color: Colors.white,
                     ),),
                 )
