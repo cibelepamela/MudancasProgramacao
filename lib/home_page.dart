@@ -12,10 +12,14 @@ class HomePage extends StatelessWidget {
       //  title: Text("Equipe Fenrir"),
       //),
       body: Center(
-          child: Expanded(
-            flex: 1,
-            child: chronometer(),
-          ),
+          child: Column(
+              children: <Widget>[
+
+                Expanded(
+                    flex: 2,
+                    child: chronometer()
+                ),
+              ])
       ),
     );
   }
