@@ -25,6 +25,7 @@ class _chronometerState extends State<chronometer> {
   var round_uuid;
   bool flag = true;
 
+
   @override
 
   void initState() {
@@ -38,24 +39,25 @@ class _chronometerState extends State<chronometer> {
         lapLocation = position;
         if (startPosition1 != null){
           volta();
-          post();
           setor();
+          post();
         }
       });
     });
   }
 
   Future<Void> post() async{
-    String json = jsonEncode(<String, String>{
+    String json = jsonEncode(<String, String> {
       "lap": lap.toString(),
       "lat": lapLocation.latitude.toString(),
       "lon": lapLocation.longitude.toString(),
       "round_uuid": round_uuid,
       "vel": (3.6*lapLocation.speed).toStringAsFixed(2),
       "set": set.toString(),
+      "time lap": time1.toString(),
       "time set": time2.toString(),
     });
-    var response = await http.post('http://fenrir.servebeer.com:1996/FenrirApi', body: json, headers: {'Content-Type': 'application/json'});
+    var response = await http.post('http://35.194.6.143/FenrirApi', body: json, headers: {'Content-Type': 'application/json'});
     print('Response status: ${response.statusCode}');
   }
 
@@ -68,10 +70,8 @@ class _chronometerState extends State<chronometer> {
       set++;
       now1 = DateTime.now();
       now2 = DateTime.now();
-//      print(distance);
+      //print(distance);
     }
-
-
   }
 
   void setor() async{
@@ -137,13 +137,18 @@ class _chronometerState extends State<chronometer> {
 
   void startstopwatch() async{
     var asinc1 = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+    var asinc2 = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+    var asinc3 = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+    var asinc4 = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
 
     swatch.start();
     swa.start();
     starttimer();
     setState(() {
       startPosition1 = asinc1;
-
+      startPosition2 = asinc2;
+      startPosition3 = asinc3;
+      startPosition4 = asinc4;
       round_uuid = uuid.v4();
       now1 = DateTime.now();
       now2 = DateTime.now();
