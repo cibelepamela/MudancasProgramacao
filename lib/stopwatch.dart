@@ -54,8 +54,8 @@ class _chronometerState extends State<chronometer> {
       "round_uuid": round_uuid,
       "vel": (3.6*lapLocation.speed).toStringAsFixed(2),
       "set": set.toString(),
-      "time lap": time1.toString(),
-      "time set": time2.toString(),
+      "timelap": time1.toString(),
+      "timeset": time2.toString(),
     });
     var response = await http.post('http://35.194.6.143/FenrirApi', body: json, headers: {'Content-Type': 'application/json'});
     print('Response status: ${response.statusCode}');
