@@ -1,4 +1,4 @@
-#Tue May 12 10:50:18 BRT 2020
-base.0=/home/fabriciocgf/AndroidStudioProjects/Fenrir_App_2020/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Sat Apr 17 21:53:58 BRT 2021
+base.0=/home/gsnagal/Área de Trabalho/Git/Fenrir_App_2020/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

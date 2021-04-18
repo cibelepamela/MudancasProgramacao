@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/fabriciocgf/AndroidStudioProjects/Fenrir_App_2020/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sr/values-sr.xml",
+            "outputFile": "/home/gsnagal/Área de Trabalho/Git/Fenrir_App_2020/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sr/values-sr.xml",
             "map": [
                 {
-                    "source": "/home/fabriciocgf/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/res/values-sr/values.xml",
+                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/res/values-sr/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/fabriciocgf/.gradle/caches/transforms-2/files-2.1/b6252bb7f30c7dceb20e97dfa6dfae00/core-1.2.0/res/values-sr/values-sr.xml",
+                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/b6252bb7f30c7dceb20e97dfa6dfae00/core-1.2.0/res/values-sr/values-sr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/fabriciocgf/.gradle/caches/transforms-2/files-2.1/f9e7d5c216ac4debba70f28c29a332be/jetified-play-services-basement-17.2.1/res/values-sr/values.xml",
+                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/559d5bbf6fb231d54da312313f446781/jetified-play-services-basement-17.2.1/res/values-sr/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
