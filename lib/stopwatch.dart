@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:ffi';
 import 'package:geolocator/geolocator.dart';
-import 'package:intl/intl.dart';
 import 'dart:convert';
 import 'package:uuid/uuid.dart';
 import 'package:http/http.dart' as http;
@@ -14,6 +13,8 @@ class chronometer extends StatefulWidget {
 }
 
 class _chronometerState extends State<chronometer> {
+
+  //Criando variáveis
   var geolocator = Geolocator();
   var uuid = Uuid();
   Position lapLocation;
@@ -26,8 +27,9 @@ class _chronometerState extends State<chronometer> {
   bool flag = true;
 
 
-  @override
 
+  //Classe initState atualiza a tela quando muda algum valor
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -46,6 +48,8 @@ class _chronometerState extends State<chronometer> {
     });
   }
 
+
+  //Faz o post na API
   Future<Void> post() async{
     String json = jsonEncode(<String, String> {
       "lap": lap.toString(),
@@ -61,6 +65,9 @@ class _chronometerState extends State<chronometer> {
     print('Response status: ${response.statusCode}');
   }
 
+
+
+  //Calcula em qual volta está
   void volta() async{
     distance1 = await geolocator.distanceBetween(startPosition1.latitude, startPosition1.longitude, lapLocation.latitude, lapLocation.longitude);
     time1 = DateTime.now().difference(now1).inMilliseconds;
@@ -74,6 +81,9 @@ class _chronometerState extends State<chronometer> {
     }
   }
 
+
+
+  //Mostra em qual setor o carro está
   void setor() async{
     distance2 = await geolocator.distanceBetween(startPosition2.latitude, startPosition2.longitude, lapLocation.latitude, lapLocation.longitude);
     distance3 = await geolocator.distanceBetween(startPosition3.latitude, startPosition3.longitude, lapLocation.latitude, lapLocation.longitude);
@@ -97,11 +107,13 @@ class _chronometerState extends State<chronometer> {
   }
 
 
+
+
+  //Variáveis do cronemetro
   bool startispressed = true;
   bool stopispressed = true;
   String stoptimetodisplay = '00:00:00';
   var swatch = Stopwatch();
-  var swa = new Stopwatch();
   final dur = const Duration(milliseconds: 1);
   int tempo = 0;
   int tempo1 = 0;
@@ -111,6 +123,10 @@ class _chronometerState extends State<chronometer> {
   int i = 1;
 
 
+  
+  //Cronometro
+  
+  //Executando keepruning depois de uma certa duração
   void starttimer(){
     Timer(dur, keepruning);
   }
@@ -119,6 +135,8 @@ class _chronometerState extends State<chronometer> {
     if (swatch.isRunning) {
       starttimer();
     }
+
+    //Atualiza a tela
     setState(() {
       if (tempo <= 10000) {
         stoptimetodisplay =
@@ -128,6 +146,8 @@ class _chronometerState extends State<chronometer> {
                 (swatch.elapsed.inMilliseconds % 60).toString().padLeft(2, '0');
         tempo = swatch.elapsed.inMilliseconds;
       }
+
+      //Resetando o cronometro
       else {
         swatch.reset();
         tempo = 0;
@@ -135,14 +155,17 @@ class _chronometerState extends State<chronometer> {
     });
   }
 
+
+
+  //Botão de start
   void startstopwatch() async{
+    //Definindo as posiçĩoes iniciais de cada setor
     var asinc1 = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
     var asinc2 = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
     var asinc3 = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
     var asinc4 = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
 
     swatch.start();
-    swa.start();
     starttimer();
     setState(() {
       startPosition1 = asinc1;
@@ -157,6 +180,8 @@ class _chronometerState extends State<chronometer> {
     });
   }
 
+
+  //Botão de pause
   void stopstopwatch(){
     setState(() {
       startPosition1 = null;
@@ -170,10 +195,10 @@ class _chronometerState extends State<chronometer> {
     });
     swatch.stop();
     swatch.reset();
-    swa.stop();
-    swa.reset();
   }
 
+
+  //Start o cornometro altomaticamente com a velocidade
   void startstopwatch_vel() async{
     velocidade =  lapLocation.speed*3.6;
     if(velocidade > 5 && flag == true){
@@ -186,6 +211,8 @@ class _chronometerState extends State<chronometer> {
   Widget build(BuildContext context) {
     startstopwatch_vel();
     return Container(
+
+      //Condicional para a cor de fundo
         color:
         tempo >=5000
             ? Colors.white
@@ -197,8 +224,10 @@ class _chronometerState extends State<chronometer> {
             Expanded(
               flex: 2,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center, //Centralizando
                 children: <Widget>[
+
+                  //Condicional para aparecer a velocidade
                   lapLocation == null
                       ? CircularProgressIndicator()
                       : Text((3.6*lapLocation.speed).toStringAsFixed(1) + " km/h",
@@ -217,6 +246,8 @@ class _chronometerState extends State<chronometer> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
+
+                        //Display do cronometro
                         stoptimetodisplay,
                         style: TextStyle(
                           fontSize: 50.0,
@@ -231,6 +262,8 @@ class _chronometerState extends State<chronometer> {
                     child: Container(
                       alignment: Alignment.center,
                       child:
+
+                      //Condicional para a volta
                       lapLocation == null
                           ? CircularProgressIndicator()
                           : Text(
@@ -255,12 +288,16 @@ class _chronometerState extends State<chronometer> {
                       flex: 1,
                       child: Container(
                         child:
+
+                        //Botão de play
                         FlatButton(
                           child: Icon(
                             Icons.play_arrow,
                             color: Colors.green,
                           ),
                           onPressed:
+
+                          //Condicional para ver se o botão está ativo
                           startispressed
                               ? startstopwatch
                               : null,
@@ -275,12 +312,16 @@ class _chronometerState extends State<chronometer> {
                     flex: 1,
                     child: Container(
                         child:
+
+                        //Botão de stop
                         FlatButton(
                           child: Icon(
                             Icons.stop,
                             color: Colors.red,
                           ),
                           onPressed:
+
+                          //Condicional para ver se o botão está ativo
                           stopispressed
                               ? null
                               : stopstopwatch,

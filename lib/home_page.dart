@@ -14,8 +14,9 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
 
                 Expanded(
-                    flex: 2,
+                    //Importando a classe cronometro
                     child: chronometer()
+
                 ),
               ])
       ),

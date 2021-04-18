@@ -24,7 +24,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
+
+      //Importanto a classe HomePage
       home: HomePage(),
+
     );
   }
  

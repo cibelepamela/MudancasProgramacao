@@ -1,27 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "/home/gsnagal/Área de Trabalho/Git/Fenrir_App_2020/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/home/gsnagal/Área de Trabalho/Fenrir_softwares/Fenrir_App_2020/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
-                {
-                    "source": "/home/gsnagal/Área de Trabalho/Git/Fenrir_App_2020/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "347"
-                    },
-                    "to": {
-                        "startLines": "105",
-                        "startColumns": "4",
-                        "startOffsets": "7801",
-                        "endLines": "109",
-                        "endColumns": "12",
-                        "endOffsets": "8093"
-                    }
-                },
                 {
                     "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/559d5bbf6fb231d54da312313f446781/jetified-play-services-basement-17.2.1/res/values/values.xml",
                     "from": {
@@ -37,6 +18,25 @@
                         "startOffsets": "5259,6437",
                         "endColumns": "67,166",
                         "endOffsets": "5322,6599"
+                    }
+                },
+                {
+                    "source": "/home/gsnagal/Área de Trabalho/Fenrir_softwares/Fenrir_App_2020/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "347"
+                    },
+                    "to": {
+                        "startLines": "105",
+                        "startColumns": "4",
+                        "startOffsets": "7801",
+                        "endLines": "109",
+                        "endColumns": "12",
+                        "endOffsets": "8093"
                     }
                 },
                 {
