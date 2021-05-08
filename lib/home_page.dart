@@ -1,25 +1,54 @@
-import 'package:flutter/material.dart';
+import 'stopwatch.dart';
+import 'speed.dart';
+import 'lap_count.dart';
 import 'stopwatch.dart';
 
-class HomePage extends StatelessWidget {
-  var userLocation;
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+class HomePage extends StatefulWidget{
+  @override
+  State<HomePage> createState() {
+    return HomePageState();
+  }
+
+}
+
+
+class HomePageState extends State<HomePage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(
-      //  title: Text("Equipe Fenrir"),
-      //),
       body: Center(
+        child: Container(
+          color: Colors.yellow[300],
           child: Column(
-              children: <Widget>[
-
+            children: <Widget>[
+              Expanded(
+                flex: 3,
+                child: Speed()
+              ),
                 Expanded(
-                    //Importando a classe cronometro
-                    child: chronometer()
-
-                ),
-              ])
-      ),
+                  flex: 2,
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: ChronometerDisplay()
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: LapCounter()
+                      )
+                    ],
+                  )
+                )
+            ],
+          ),
+        ),
+      )
     );
   }
+
 }
