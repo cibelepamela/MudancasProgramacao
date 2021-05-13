@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'speed.dart';
+import 'home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -20,9 +20,8 @@ class LapCounterController extends ChangeNotifier{
 
   void start() async{
     flagLap = true;
-    SpeedState.instance.lapLocation = await SpeedState.instance.geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-    startPosition = await SpeedState.instance.geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
     now1 = DateTime.now();
+    startPosition = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
     volta();
   }
 
@@ -39,15 +38,15 @@ class LapCounterController extends ChangeNotifier{
 
 
   void volta() async{
-    distance1 = await SpeedState.instance.geolocator.distanceBetween(
+    distance1 = await Geolocator().distanceBetween(
       startPosition.latitude,
       startPosition.longitude,
-      SpeedState.instance.lapLocation.latitude,
-      SpeedState.instance.lapLocation.longitude
+      HomePageState.instance.lapLocation.latitude,
+      HomePageState.instance.lapLocation.longitude
       );
     time1 = DateTime.now().difference(now1).inMilliseconds;
     //time2 = DateTime.now().difference(now2).inMilliseconds;
-    if (time1>5000 && flagLap ){
+    if ( time1>10000 && distance1<5 && flagLap ){
       lap.value++;
       now1 = DateTime.now();
       notifyListeners();

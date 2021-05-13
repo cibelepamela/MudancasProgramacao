@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
     
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.red,
       ),
 
       //Importanto a classe HomePage
@@ -30,5 +31,4 @@ class MyApp extends StatelessWidget {
 
     );
   }
- 
 }
