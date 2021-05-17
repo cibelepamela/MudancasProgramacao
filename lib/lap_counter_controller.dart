@@ -8,9 +8,8 @@ class LapCounterController extends ChangeNotifier{
 
   static LapCounterController instance = LapCounterController();
 
-
-  final lap = ValueNotifier<int>(0);
-  final dur = const Duration(milliseconds: 500);
+  int lap = 0;
+  final dur = const Duration(milliseconds: 1);
   bool flagLap = true;
   double distance1;
   Position startPosition;
@@ -28,7 +27,7 @@ class LapCounterController extends ChangeNotifier{
 
   void reset(){
     flagLap = false;
-    lap.value = 0;
+    lap = 0;
   }
 
 
@@ -46,8 +45,8 @@ class LapCounterController extends ChangeNotifier{
       );
     time1 = DateTime.now().difference(now1).inMilliseconds;
     //time2 = DateTime.now().difference(now2).inMilliseconds;
-    if ( time1>10000 && distance1<5 && flagLap ){
-      lap.value++;
+    if ( time1>1000 && distance1<5 && flagLap ){
+      lap++;
       now1 = DateTime.now();
       notifyListeners();
     }

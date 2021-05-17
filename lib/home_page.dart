@@ -1,20 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi';
-
 import 'package:fenrir_software/stopwatch_controller.dart';
 import 'package:geolocator/geolocator.dart';
-
 import 'lap_counter_controller.dart';
 import 'stopwatch.dart';
 import 'lap_count.dart';
 import 'stopwatch.dart';
-
 import 'package:http/http.dart' as http;
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 
 class HomePage extends StatefulWidget{
   @override
@@ -29,12 +25,10 @@ class HomePageState extends State<HomePage> {
 
   static HomePageState instance = HomePageState();
 
-
   Position lapLocation;
   StreamSubscription<Position> positionStream;
 
 
-  
   @override
   void initState() {
     // TODO: implement initState
@@ -53,7 +47,7 @@ class HomePageState extends State<HomePage> {
   //Faz o post na API
   Future<Void> post() async{
     String json = jsonEncode(<String, String> {
-      "lap": LapCounterController.instance.lap.value.toString(),
+      "lap": LapCounterController.instance.lap.toString(),
       "lat": lapLocation.latitude.toString(),
       "lon": lapLocation.longitude.toString(),
       "round_uuid": Chronometer.instance.round_uuid,
@@ -112,52 +106,41 @@ class HomePageState extends State<HomePage> {
                   child: Row(
                     children: <Widget>[
                       Expanded(
-                flex: 1,
-                child: Container(
-                  child: 
-                    AnimatedBuilder(
-                      animation: Chronometer.instance,
-                      builder: (context, child) { 
-                        return 
-                        FlatButton(
-                          height: 70,
-                          onPressed:
-                            //Condicional para ver se o botão está ativo
-                            Chronometer.instance.startispressed
-                              ? Chronometer.instance.startstopwatch 
-                              : null,
-                            child: Icon(
-                              Icons.play_arrow,
-                              color: Colors.green,
-                            ),
-                        );      
-                      },
-                    )  
-          ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  child: 
-                  AnimatedBuilder(
-                    animation: Chronometer.instance,
-                    builder: (context, child) {
-                      return FlatButton(
-                        height: 70,
-                        onPressed:
-                          //Condicional para ver se o botão está ativo
-                          Chronometer.instance.stopispressed
-                            ? null
-                            : Chronometer.instance.stopstopwatch,
-                        child: Icon(
-                          Icons.stop,
-                          color: Colors.red,
+                        flex: 1,
+                        child: Container(
+                          child: 
+                            TextButton(
+                              onPressed:
+                                //Condicional para ver se o botão está ativo
+                                Chronometer.instance.startispressed
+                                  ? Chronometer.instance.startstopwatch 
+                                  : null,
+                                child: Icon(
+                                  Icons.play_arrow,
+                                  color: Colors.green,
+                                ),
+                            )
                         ),
-                      );
-                      },)
-          ),
-              )
-                  ],)
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          child: 
+                            TextButton(
+                              onPressed:
+                                //Condicional para ver se o botão está ativo
+                                Chronometer.instance.stopispressed
+                                  ? null
+                                  : Chronometer.instance.stopstopwatch,
+                                child: Icon(
+                                  Icons.stop,
+                                  color: Colors.red,
+                                ),
+                            )
+                        ),
+                      )
+                    ],
+                  )
                 )
             ],
           ),

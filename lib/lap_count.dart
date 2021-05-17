@@ -17,11 +17,12 @@ class LapConterState extends State<LapCounter>{
   Widget build(BuildContext context){
     return Container(
       alignment: Alignment.center,
-      child: ValueListenableBuilder(
-        valueListenable: LapCounterController.instance.lap,
-        builder: (context, value, child){
+      child: 
+      AnimatedBuilder(
+        animation: LapCounterController.instance,
+        builder: (context, child){
           return Text(
-            LapCounterController.instance.lap.value.toString() + " laps",
+            LapCounterController.instance.lap.toString() + " laps",
             style: TextStyle(
               fontSize: 50.0,
               fontWeight: FontWeight.w700,
