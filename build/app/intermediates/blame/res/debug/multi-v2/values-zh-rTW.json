@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "/home/gsnagal/Área de Trabalho/Fenrir_App_2021/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "/home/gsnagal/Área de Trabalho/Fenrir/Fenrir_App_2021/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
             "map": [
+                {
+                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/f43b5b6b9dd8ce39cfdef90d99fdb03d/jetified-play-services-basement-17.2.1/res/values-zh-rTW/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "251",
+                        "endColumns": "161",
+                        "endOffsets": "412"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1127",
+                        "endColumns": "161",
+                        "endOffsets": "1284"
+                    }
+                },
                 {
                     "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/res/values-zh-rTW/values.xml",
                     "from": {
@@ -35,23 +52,6 @@
                         "startOffsets": "2413",
                         "endColumns": "100",
                         "endOffsets": "2509"
-                    }
-                },
-                {
-                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/559d5bbf6fb231d54da312313f446781/jetified-play-services-basement-17.2.1/res/values-zh-rTW/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "251",
-                        "endColumns": "161",
-                        "endOffsets": "412"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1127",
-                        "endColumns": "161",
-                        "endOffsets": "1284"
                     }
                 }
             ]

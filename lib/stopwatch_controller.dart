@@ -6,11 +6,10 @@ import 'package:flutter/widgets.dart';
 import 'lap_counter_controller.dart';
 import 'package:uuid/uuid.dart';
 
-class Chronometer extends ChangeNotifier{
+class Chronometer extends ChangeNotifier {
 
 
   static Chronometer instance = Chronometer();
-
 
   bool startispressed = true;
   bool stopispressed = true;

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/gsnagal/Área de Trabalho/Fenrir_App_2021/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ml/values-ml.xml",
+            "outputFile": "/home/gsnagal/Área de Trabalho/Fenrir/Fenrir_App_2021/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ml/values-ml.xml",
             "map": [
                 {
-                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/559d5bbf6fb231d54da312313f446781/jetified-play-services-basement-17.2.1/res/values-ml/values.xml",
+                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/f43b5b6b9dd8ce39cfdef90d99fdb03d/jetified-play-services-basement-17.2.1/res/values-ml/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

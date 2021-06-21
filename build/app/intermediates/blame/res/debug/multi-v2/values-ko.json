@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/gsnagal/Área de Trabalho/Fenrir_App_2021/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ko/values-ko.xml",
+            "outputFile": "/home/gsnagal/Área de Trabalho/Fenrir/Fenrir_App_2021/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ko/values-ko.xml",
             "map": [
                 {
                     "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/f81e9fffe318fdc5660099e12e35729e/play-services-base-17.2.1/res/values-ko/values.xml",
@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/f43b5b6b9dd8ce39cfdef90d99fdb03d/jetified-play-services-basement-17.2.1/res/values-ko/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "179",
+                        "endOffsets": "426"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1158",
+                        "endColumns": "179",
+                        "endOffsets": "1333"
+                    }
+                },
+                {
                     "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/b6252bb7f30c7dceb20e97dfa6dfae00/core-1.2.0/res/values-ko/values-ko.xml",
                     "from": {
                         "startLines": "2",
@@ -35,23 +52,6 @@
                         "startOffsets": "2541",
                         "endColumns": "100",
                         "endOffsets": "2637"
-                    }
-                },
-                {
-                    "source": "/home/gsnagal/.gradle/caches/transforms-2/files-2.1/559d5bbf6fb231d54da312313f446781/jetified-play-services-basement-17.2.1/res/values-ko/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "179",
-                        "endOffsets": "426"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1158",
-                        "endColumns": "179",
-                        "endOffsets": "1333"
                     }
                 }
             ]
